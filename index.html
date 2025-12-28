@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SidiBou Bar & Restaurant - Gili Air</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #d4af37;
+            --secondary: #8b4513;
+            --dark: #121212;
+            --dark-secondary: #1e1e1e;
+            --light: #f5f5f5;
+            --gray: #888;
+            --success: #28a745;
+            --danger: #dc3545;
+            --info: #17a2b8;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e6c158;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #9a5520;
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        /* Header dan Navigasi */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--light);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--dark-secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-img img:hover {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .menu-item {
+            background-color: var(--dark-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-info {
+            padding: 20px;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .menu-item-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart-btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #e6c158;
+        }
+        
+        /* Reservation Section */
+        .reservation {
+            padding: 100px 0;
+            background-color: var(--dark-secondary);
+        }
+        
+        .reservation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--dark);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--dark-secondary);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        /* Shopping Cart */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: var(--dark);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 15px;
+        }
+        
+        .cart-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-cart:hover {
+            color: var(--primary);
+        }
+        
+        .cart-items {
+            margin-bottom: 30px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .cart-item-info h4 {
+            color: var(--light);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quantity-btn {
+            background-color: var(--dark-secondary);
+            border: none;
+            color: var(--light);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+        
+        .quantity {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .remove-item:hover {
+            color: #ff6b6b;
+        }
+        
+        .cart-total {
+            text-align: right;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .cart-total h4 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .cart-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Cart Icon */
+        .cart-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: var(--dark);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .cart-icon:hover {
+            background-color: #e6c158;
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Location Section */
+        .location {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .location-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .location-info {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .location-info h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .location-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        
+        .location-info i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .map-container {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Live Chat */
+        .chat-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            background-color: var(--dark);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 1002;
+            display: none;
+            overflow: hidden;
+        }
+        
+        .chat-widget.active {
+            display: block;
+        }
+        
+        .chat-header {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h4 {
+            font-weight: 600;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--dark-secondary);
+        }
+        
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+        
+        .message-bubble {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+        }
+        
+        .chat-message.bot .message-bubble {
+            background-color: #333;
+            color: var(--light);
+            border-top-left-radius: 5px;
+        }
+        
+        .chat-message.user .message-bubble {
+            background-color: var(--primary);
+            color: var(--dark);
+            border-top-right-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: var(--dark);
+            border-top: 1px solid #444;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .chat-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 100px;
+            background-color: var(--info);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .chat-icon:hover {
+            background-color: #138496;
+            transform: scale(1.1);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            z-index: 1003;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(100px);
+            transition: var(--transition);
+        }
+        
+        .notification.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+        }
+        
+        .notification.error {
+            background-color: var(--danger);
+        }
+        
+        .notification.info {
+            background-color: var(--info);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1004;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--dark);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: var(--transition);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            background-color: var(--dark-secondary);
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        /* Order History */
+        .order-history {
+            padding: 100px 0;
+            background-color: var(--dark-secondary);
+        }
+        
+        .order-table {
+            width: 100%;
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+        
+        .order-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .order-table th {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .order-table td {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .order-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status.pending {
+            background-color: #ffc107;
+            color: #333;
+        }
+        
+        .status.confirmed {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .status.completed {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-column p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-secondary);
+            border-radius: 50%;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text {
+                width: 100%;
+            }
+            
+            .chat-widget {
+                width: 300px;
+                right: 20px;
+            }
+            
+            .cart-sidebar {
+                width: 320px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .chat-icon {
+                right: 80px;
+                bottom: 100px;
+            }
+            
+            .cart-icon {
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+            
+            .reservation-form {
+                padding: 25px;
+            }
+            
+            .chat-widget {
+                width: 280px;
+                right: 10px;
+                bottom: 80px;
+            }
+            
+            .chat-icon {
+                right: 20px;
+                bottom: 100px;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .cart-sidebar.active {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigasi -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Sidi<span>Bou</span></a>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservation">Reservasi</a></li>
+                <li><a href="#order-history">Riwayat Pesanan</a></li>
+                <li><a href="#location">Lokasi</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>SidiBou Bar & Restaurant</h1>
+            <p>Pengalaman kuliner eksklusif dengan pemandangan matahari terbenam yang memukau di pantai Gili Air</p>
+            <p>Menikmati hidangan laut segar, koktail kreatif, dan atmosfer pantai yang santai</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">Lihat Menu</a>
+                <a href="#reservation" class="btn btn-secondary">Reservasi Meja</a>
+                <button id="orderOnlineBtn" class="btn btn-success">Pesan Online</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Kami</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Interior SidiBou Bar & Restaurant">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Pengalaman Kuliner Tak Terlupakan di Gili Air</h3>
+                    <p>SidiBou Bar & Restaurant adalah destinasi kuliner premium yang terletak di jantung pantai Sunset, Gili Air. Kami menghadirkan perpaduan sempurna antara cita rasa internasional dan sentuhan lokal dengan bahan-bahan segar khas Lombok.</p>
+                    <p>Dengan pemandangan matahari terbenam yang spektakuler langsung dari meja Anda, kami menawarkan pengalaman bersantap yang tak terlupakan. Suasana romantis di malam hari dengan live music akustik menciptakan atmosfer yang sempurna untuk momen spesial.</p>
+                    <p>Tim chef kami yang berpengalaman menghadirkan kreasi menu inovatif, sementara bartender kami menyajikan koktail signature yang menyegarkan.</p>
+                    <a href="#reservation" class="btn">Reservasi Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Menu Pilihan</h2>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Menu Items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reservasi Meja</h2>
+            </div>
+            
+            <div class="reservation-form">
+                <form id="reservationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reservationName">Nama Lengkap *</label>
+                            <input type="text" id="reservationName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reservationPhone">Nomor Telepon *</label>
+                            <input type="tel" id="reservationPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reservationDate">Tanggal Reservasi *</label>
+                            <input type="date" id="reservationDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reservationTime">Waktu *</label>
+                            <select id="reservationTime" required>
+                                <option value="">Pilih Waktu</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reservationGuests">Jumlah Tamu *</label>
+                            <select id="reservationGuests" required>
+                                <option value="">Pilih Jumlah Tamu</option>
+                                <option value="1">1 Orang</option>
+                                <option value="2">2 Orang</option>
+                                <option value="3">3 Orang</option>
+                                <option value="4">4 Orang</option>
+                                <option value="5">5 Orang</option>
+                                <option value="6">6 Orang</option>
+                                <option value="7">7+ Orang</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reservationTable">Tipe Meja</label>
+                            <select id="reservationTable">
+                                <option value="standard">Standard</option>
+                                <option value="window">Dekat Jendela</option>
+                                <option value="terrace">Terrace</option>
+                                <option value="vip">VIP Area</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reservationNotes">Catatan Tambahan</label>
+                        <textarea id="reservationNotes" rows="3" placeholder="Contoh: Permintaan khusus, alergi makanan, dll."></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="btn">Buat Reservasi</button>
+                        <button type="reset" class="btn btn-secondary">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order History Section -->
+    <section id="order-history" class="order-history">
+        <div class="container">
+            <div class="section-title">
+                <h2>Riwayat Pesanan</h2>
+            </div>
+            
+            <div class="order-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. Pesanan</th>
+                            <th>Tanggal</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderHistoryBody">
+                        <!-- Order history will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lokasi & Jam Operasional</h2>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Kunjungi Kami di Pantai Sunset</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Alamat:</strong> Jalan Pantai Sunset, Gili Air, Lombok Utara, Nusa Tenggara Barat</p>
+                    <p><i class="fas fa-clock"></i> <strong>Jam Operasional:</strong> Setiap Hari, 10:00 - 23:00 WITA</p>
+                    <p><i class="fas fa-phone-alt"></i> <strong>Telepon:</strong> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@sidibou-giliair.com</p>
+                    <p><i class="fas fa-utensils"></i> <strong>Happy Hour:</strong> Setiap hari pukul 17:00 - 19:00 (Buy 1 Get 1 untuk semua minuman)</p>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.292251300809!2d116.07325867499684!3d-8.353708291760751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcde0ab4fff9cff%3A0xcd6c2a1b2c8e7f9f!2sGili%20Air!5e0!3m2!1sid!2sid!4v1688123456789!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SidiBou Bar & Restaurant</h3>
+                    <p>Tempat terbaik untuk menikmati matahari terbenam sambil menikmati hidangan lezat dan minuman menyegarkan di Gili Air.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservation">Reservasi Meja</a></li>
+                        <li><a href="#order-history">Riwayat Pesanan</a></li>
+                        <li><a href="#location">Lokasi & Jam Buka</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hubungi Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jalan Pantai Sunset, Gili Air, Lombok Utara</p>
+                    <p><i class="fas fa-phone-alt"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@sidibou-giliair.com</p>
+                    <p><i class="fas fa-clock"></i> Setiap Hari: 10:00 - 23:00 WITA</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SidiBou Bar & Restaurant. Hak Cipta Dilindungi. | Dibuat dengan <i class="fas fa-heart" style="color:#d4af37;"></i> untuk pecinta kuliner Gili Air</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Icon -->
+    <div class="cart-icon" id="cartIcon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Chat Icon -->
+    <div class="chat-icon" id="chatIcon">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Keranjang Belanja</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be populated by JavaScript -->
+        </div>
+        
+        <div class="cart-total">
+            <h4>Total: Rp <span id="cartTotalPrice">0</span></h4>
+        </div>
+        
+        <div class="cart-buttons">
+            <button class="btn btn-success" id="checkoutBtn">Checkout</button>
+            <button class="btn btn-secondary" id="clearCartBtn">Kosongkan Keranjang</button>
+            <button class="btn" id="continueShoppingBtn">Lanjut Belanja</button>
+        </div>
+    </div>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <h4>Live Chat SidiBou</h4>
+            <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                <div class="message-bubble">
+                    Halo! Selamat datang di SidiBou Bar & Restaurant. Ada yang bisa saya bantu?
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+            <button class="btn" id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Checkout Pesanan</h3>
+                <button class="close-modal" id="closeCheckoutModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="checkoutName">Nama Lengkap *</label>
+                        <input type="text" id="checkoutName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkoutPhone">Nomor Telepon *</label>
+                        <input type="tel" id="checkoutPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkoutEmail">Email</label>
+                        <input type="email" id="checkoutEmail">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkoutAddress">Alamat Pengiriman *</label>
+                        <textarea id="checkoutAddress" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkoutNotes">Catatan Pesanan</label>
+                        <textarea id="checkoutNotes" rows="2" placeholder="Contoh: Jangan pakai cabai, tambah es, dll."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkoutMethod">Metode Pembayaran *</label>
+                        <select id="checkoutMethod" required>
+                            <option value="">Pilih Metode</option>
+                            <option value="cash">Bayar di Tempat (Cash)</option>
+                            <option value="transfer">Transfer Bank</option>
+                            <option value="card">Kartu Kredit/Debit</option>
+                            <option value="ewallet">E-Wallet (GoPay, OVO, Dana)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h4>Ringkasan Pesanan</h4>
+                        <div id="checkoutOrderSummary">
+                            <!-- Order summary will be populated by JavaScript -->
+                        </div>
+                        <p><strong>Total: Rp <span id="checkoutTotal">0</span></strong></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelCheckoutBtn">Batal</button>
+                <button class="btn btn-success" id="confirmCheckoutBtn">Konfirmasi Pesanan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Confirmation Modal -->
+    <div class="modal" id="reservationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reservasi Berhasil!</h3>
+                <button class="close-modal" id="closeReservationModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <p>Terima kasih <span id="reservationCustomerName"></span>! Reservasi Anda telah berhasil dibuat.</p>
+                <div class="reservation-details">
+                    <p><strong>Detail Reservasi:</strong></p>
+                    <p>Tanggal: <span id="reservationDetailDate"></span></p>
+                    <p>Waktu: <span id="reservationDetailTime"></span></p>
+                    <p>Jumlah Tamu: <span id="reservationDetailGuests"></span> orang</p>
+                    <p>Tipe Meja: <span id="reservationDetailTable"></span></p>
+                    <p>No. Reservasi: <span id="reservationNumber"></span></p>
+                </div>
+                <p>Kami akan mengirimkan konfirmasi via WhatsApp ke nomor telepon Anda. Harap tiba 15 menit sebelum waktu reservasi.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" id="closeReservationBtn">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pesanan Berhasil!</h3>
+                <button class="close-modal" id="closeOrderModal"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <p>Terima kasih <span id="orderCustomerName"></span>! Pesanan Anda telah berhasil dibuat.</p>
+                <div class="order-details">
+                    <p><strong>Detail Pesanan:</strong></p>
+                    <div id="orderDetailsList">
+                        <!-- Order details will be populated by JavaScript -->
+                    </div>
+                    <p><strong>Total: Rp <span id="orderTotal"></span></strong></p>
+                    <p><strong>Metode Pembayaran:</strong> <span id="orderPaymentMethod"></span></p>
+                    <p><strong>No. Pesanan:</strong> <span id="orderNumber"></span></p>
+                </div>
+                <p>Pesanan Anda akan diproses segera. Estimasi pengiriman: 45-60 menit.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" id="closeOrderBtn">Tutup</button>
+                <button class="btn btn-success" id="trackOrderBtn">Lacak Pesanan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Menu
+        const menuItems = [
+            {
+                id: 1,
+                name: "Lobster Bakar Saus Rempah",
+                description: "Lobster segar bakar dengan saus rempah khas Lombok, disajikan dengan sayuran panggang dan nasi daun jeruk.",
+                price: 285000,
+                image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+                category: "main"
+            },
+            {
+                id: 2,
+                name: "Beef Tenderloin Black Pepper",
+                description: "Tenderloin sapi premium dengan saus lada hitam, kentang tumbuk truffle, dan asparagus.",
+                price: 195000,
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                category: "main"
+            },
+            {
+                id: 3,
+                name: "SidiBou Seafood Platter",
+                description: "Piringan seafood lengkap berisi ikan bakar, udang, cumi, kerang, dan kepiting dengan 3 pilihan saus.",
+                price: 350000,
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80",
+                category: "main"
+            },
+            {
+                id: 4,
+                name: "Sunset Passion Mojito",
+                description: "Koktail signature kami dengan rum, markisa lokal, daun mint, dan soda, disajikan dengan es serut.",
+                price: 85000,
+                image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                category: "drink"
+            },
+            {
+                id: 5,
+                name: "Salad Segar Gili Air",
+                description: "Campuran sayuran organik lokal dengan udang panggang, alpukat, dan dressing jeruk nipis madu.",
+                price: 75000,
+                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80",
+                category: "appetizer"
+            },
+            {
+                id: 6,
+                name: "Chocolate Lava dengan Es Krim Kelapa",
+                description: "Kue coklat lembut dengan lelehan coklat di dalamnya, disajikan dengan es krim kelapa buatan sendiri.",
+                price: 65000,
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                category: "dessert"
+            },
+            {
+                id: 7,
+                name: "Ikan Bakar Jimbaran",
+                description: "Ikan kakap bakar dengan bumbu khas Jimbaran, sambal matah, dan nasi putih.",
+                price: 120000,
+                image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                category: "main"
+            },
+            {
+                id: 8,
+                name: "Mocktail Sunrise Gili",
+                description: "Minuman non-alkohol dengan campuran jus jeruk, nanas, dan grenadine syrup.",
+                price: 55000,
+                image: "https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                category: "drink"
+            }
+        ];
+
+        // Data Riwayat Pesanan (simulasi)
+        let orderHistory = [
+            {
+                id: "SB-00123",
+                date: "2023-10-15",
+                items: "Lobster Bakar, Sunset Mojito",
+                total: 370000,
+                status: "completed"
+            },
+            {
+                id: "SB-00124",
+                date: "2023-10-20",
+                items: "Beef Tenderloin, Salad Segar",
+                total: 270000,
+                status: "confirmed"
+            },
+            {
+                id: "SB-00125",
+                date: "2023-10-25",
+                items: "Seafood Platter, Chocolate Lava",
+                total: 415000,
+                status: "pending"
+            }
+        ];
+
+        // Shopping Cart
+        let cart = JSON.parse(localStorage.getItem('sidibou_cart')) || [];
+        
+        // DOM Elements
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.getElementById('cartCount');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const clearCartBtn = document.getElementById('clearCartBtn');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const continueShoppingBtn = document.getElementById('continueShoppingBtn');
+        const chatIcon = document.getElementById('chatIcon');
+        const chatWidget = document.getElementById('chatWidget');
+        const closeChat = document.getElementById('closeChat');
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const closeCheckoutModal = document.getElementById('closeCheckoutModal');
+        const cancelCheckoutBtn = document.getElementById('cancelCheckoutBtn');
+        const confirmCheckoutBtn = document.getElementById('confirmCheckoutBtn');
+        const checkoutOrderSummary = document.getElementById('checkoutOrderSummary');
+        const checkoutTotal = document.getElementById('checkoutTotal');
+        const reservationForm = document.getElementById('reservationForm');
+        const reservationModal = document.getElementById('reservationModal');
+        const closeReservationModal = document.getElementById('closeReservationModal');
+        const closeReservationBtn = document.getElementById('closeReservationBtn');
+        const orderOnlineBtn = document.getElementById('orderOnlineBtn');
+        const orderModal = document.getElementById('orderModal');
+        const closeOrderModal = document.getElementById('closeOrderModal');
+        const closeOrderBtn = document.getElementById('closeOrderBtn');
+        const menuGrid = document.querySelector('.menu-grid');
+        const orderHistoryBody = document.getElementById('orderHistoryBody');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load menu items
+            renderMenuItems();
+            
+            // Load order history
+            renderOrderHistory();
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Set min date for reservation to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('reservationDate').setAttribute('min', today);
+        });
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+            }
+        });
+        
+        // Render menu items
+        function renderMenuItems() {
+            menuGrid.innerHTML = '';
+            
+            menuItems.forEach(item => {
+                const menuItemElement = document.createElement('div');
+                menuItemElement.className = 'menu-item';
+                menuItemElement.innerHTML = `
+                    <div class="menu-item-img">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="menu-item-info">
+                        <div class="menu-item-header">
+                            <h4 class="menu-item-name">${item.name}</h4>
+                            <span class="menu-item-price">Rp ${item.price.toLocaleString('id-ID')}</span>
+                        </div>
+                        <p class="menu-item-desc">${item.description}</p>
+                        <button class="add-to-cart-btn" data-id="${item.id}">
+                            <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+                        </button>
+                    </div>
+                `;
+                
+                menuGrid.appendChild(menuItemElement);
+            });
+            
+            // Add event listeners to "Add to Cart" buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    addToCart(itemId);
+                });
+            });
+        }
+        
+        // Render order history
+        function renderOrderHistory() {
+            orderHistoryBody.innerHTML = '';
+            
+            if (orderHistory.length === 0) {
+                orderHistoryBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 30px;">
+                            Belum ada riwayat pesanan. Silakan lakukan pemesanan terlebih dahulu.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            orderHistory.forEach(order => {
+                const statusClass = order.status;
+                let statusText = '';
+                
+                switch(order.status) {
+                    case 'pending':
+                        statusText = 'Menunggu Konfirmasi';
+                        break;
+                    case 'confirmed':
+                        statusText = 'Dikonfirmasi';
+                        break;
+                    case 'completed':
+                        statusText = 'Selesai';
+                        break;
+                }
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.date}</td>
+                    <td>${order.items}</td>
+                    <td>Rp ${order.total.toLocaleString('id-ID')}</td>
+                    <td><span class="status ${statusClass}">${statusText}</span></td>
+                `;
+                
+                orderHistoryBody.appendChild(row);
+            });
+        }
+        
+        // Cart Functions
+        function addToCart(itemId) {
+            const item = menuItems.find(menuItem => menuItem.id === itemId);
+            
+            if (!item) return;
+            
+            // Check if item already in cart
+            const existingItemIndex = cart.findIndex(cartItem => cartItem.id === itemId);
+            
+            if (existingItemIndex > -1) {
+                // Increase quantity
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                // Add new item
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('sidibou_cart', JSON.stringify(cart));
+            
+            // Update cart UI
+            updateCartCount();
+            renderCartItems();
+            
+            // Show notification
+            showNotification(`${item.name} telah ditambahkan ke keranjang`, 'success');
+        }
+        
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+        
+        function renderCartItems() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #aaa;">Keranjang belanja kosong</p>';
+                cartTotalPrice.textContent = '0';
+                return;
+            }
+            
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</p>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-btn" data-id="${item.id}">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn increase-btn" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItemElement);
+            });
+            
+            cartTotalPrice.textContent = totalPrice.toLocaleString('id-ID');
+            
+            // Add event listeners to cart controls
+            document.querySelectorAll('.decrease-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    updateCartItemQuantity(itemId, -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    updateCartItemQuantity(itemId, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    removeCartItem(itemId);
+                });
+            });
+        }
+        
+        function updateCartItemQuantity(itemId, change) {
+            const itemIndex = cart.findIndex(item => item.id === itemId);
+            
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += change;
+                
+                // Remove item if quantity is 0 or less
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                    showNotification('Item telah dihapus dari keranjang', 'info');
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('sidibou_cart', JSON.stringify(cart));
+                
+                // Update UI
+                updateCartCount();
+                renderCartItems();
+            }
+        }
+        
+        function removeCartItem(itemId) {
+            const itemIndex = cart.findIndex(item => item.id === itemId);
+            
+            if (itemIndex > -1) {
+                const itemName = cart[itemIndex].name;
+                cart.splice(itemIndex, 1);
+                
+                // Save to localStorage
+                localStorage.setItem('sidibou_cart', JSON.stringify(cart));
+                
+                // Update UI
+                updateCartCount();
+                renderCartItems();
+                
+                // Show notification
+                showNotification(`${itemName} telah dihapus dari keranjang`, 'info');
+            }
+        }
+        
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('sidibou_cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+            showNotification('Keranjang belanja telah dikosongkan', 'info');
+        }
+        
+        // Cart Sidebar Toggle
+        cartIcon.addEventListener('click', () => {
+            renderCartItems();
+            cartSidebar.classList.add('active');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+        });
+        
+        continueShoppingBtn.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+        });
+        
+        // Clear Cart
+        clearCartBtn.addEventListener('click', clearCart);
+        
+        // Checkout Functions
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showNotification('Keranjang belanja kosong', 'error');
+                return;
+            }
+            
+            // Render checkout summary
+            renderCheckoutSummary();
+            
+            // Show checkout modal
+            checkoutModal.classList.add('active');
+            cartSidebar.classList.remove('active');
+        });
+        
+        function renderCheckoutSummary() {
+            checkoutOrderSummary.innerHTML = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.style.marginBottom = '10px';
+                itemElement.style.paddingBottom = '10px';
+                itemElement.style.borderBottom = '1px solid #333';
+                itemElement.innerHTML = `
+                    <p>${item.name} (${item.quantity}x) - Rp ${itemTotal.toLocaleString('id-ID')}</p>
+                `;
+                
+                checkoutOrderSummary.appendChild(itemElement);
+            });
+            
+            checkoutTotal.textContent = totalPrice.toLocaleString('id-ID');
+        }
+        
+        // Close Checkout Modal
+        closeCheckoutModal.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+        
+        cancelCheckoutBtn.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+        
+        // Confirm Checkout
+        confirmCheckoutBtn.addEventListener('click', () => {
+            const name = document.getElementById('checkoutName').value;
+            const phone = document.getElementById('checkoutPhone').value;
+            const email = document.getElementById('checkoutEmail').value;
+            const address = document.getElementById('checkoutAddress').value;
+            const notes = document.getElementById('checkoutNotes').value;
+            const paymentMethod = document.getElementById('checkoutMethod').value;
+            
+            if (!name || !phone || !address || !paymentMethod) {
+                showNotification('Harap isi semua field yang wajib diisi', 'error');
+                return;
+            }
+            
+            // Generate order number
+            const orderNumber = 'SB-' + Math.floor(100000 + Math.random() * 900000);
+            
+            // Calculate total
+            let totalPrice = 0;
+            let itemsList = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                itemsList += `${item.name} (${item.quantity}x), `;
+            });
+            
+            // Remove trailing comma
+            itemsList = itemsList.slice(0, -2);
+            
+            // Add to order history
+            const newOrder = {
+                id: orderNumber,
+                date: new Date().toISOString().split('T')[0],
+                items: itemsList,
+                total: totalPrice,
+                status: 'pending'
+            };
+            
+            orderHistory.unshift(newOrder);
+            
+            // Update order history display
+            renderOrderHistory();
+            
+            // Fill order confirmation modal
+            document.getElementById('orderCustomerName').textContent = name;
+            document.getElementById('orderTotal').textContent = totalPrice.toLocaleString('id-ID');
+            document.getElementById('orderPaymentMethod').textContent = getPaymentMethodText(paymentMethod);
+            document.getElementById('orderNumber').textContent = orderNumber;
+            
+            // Fill order details list
+            const orderDetailsList = document.getElementById('orderDetailsList');
+            orderDetailsList.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                const itemElement = document.createElement('p');
+                itemElement.textContent = `${item.name} (${item.quantity}x) - Rp ${itemTotal.toLocaleString('id-ID')}`;
+                orderDetailsList.appendChild(itemElement);
+            });
+            
+            // Clear cart
+            clearCart();
+            
+            // Close checkout modal
+            checkoutModal.classList.remove('active');
+            
+            // Reset checkout form
+            document.getElementById('checkoutForm').reset();
+            
+            // Show order confirmation modal
+            orderModal.classList.add('active');
+            
+            // Show notification
+            showNotification('Pesanan berhasil dibuat!', 'success');
+        });
+        
+        function getPaymentMethodText(method) {
+            switch(method) {
+                case 'cash':
+                    return 'Bayar di Tempat (Cash)';
+                case 'transfer':
+                    return 'Transfer Bank';
+                case 'card':
+                    return 'Kartu Kredit/Debit';
+                case 'ewallet':
+                    return 'E-Wallet (GoPay, OVO, Dana)';
+                default:
+                    return method;
+            }
+        }
+        
+        // Order Online Button
+        orderOnlineBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: document.getElementById('menu').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Close Order Modal
+        closeOrderModal.addEventListener('click', () => {
+            orderModal.classList.remove('active');
+        });
+        
+        closeOrderBtn.addEventListener('click', () => {
+            orderModal.classList.remove('active');
+        });
+        
+        // Track Order Button
+        document.getElementById('trackOrderBtn').addEventListener('click', () => {
+            orderModal.classList.remove('active');
+            showNotification('Fitur lacak pesanan akan segera tersedia', 'info');
+        });
+        
+        // Reservation Form
+        reservationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('reservationName').value;
+            const phone = document.getElementById('reservationPhone').value;
+            const date = document.getElementById('reservationDate').value;
+            const time = document.getElementById('reservationTime').value;
+            const guests = document.getElementById('reservationGuests').value;
+            const tableType = document.getElementById('reservationTable').value;
+            const notes = document.getElementById('reservationNotes').value;
+            
+            // Generate reservation number
+            const reservationNumber = 'RES-' + Math.floor(1000 + Math.random() * 9000);
+            
+            // Fill reservation confirmation modal
+            document.getElementById('reservationCustomerName').textContent = name;
+            document.getElementById('reservationDetailDate').textContent = formatDate(date);
+            document.getElementById('reservationDetailTime').textContent = time;
+            document.getElementById('reservationDetailGuests').textContent = guests;
+            document.getElementById('reservationDetailTable').textContent = getTableTypeText(tableType);
+            document.getElementById('reservationNumber').textContent = reservationNumber;
+            
+            // Show reservation confirmation modal
+            reservationModal.classList.add('active');
+            
+            // Reset form
+            this.reset();
+            
+            // Show notification
+            showNotification('Reservasi berhasil dibuat!', 'success');
+        });
+        
+        function formatDate(dateString) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', options);
+        }
+        
+        function getTableTypeText(type) {
+            switch(type) {
+                case 'standard':
+                    return 'Standard';
+                case 'window':
+                    return 'Dekat Jendela';
+                case 'terrace':
+                    return 'Terrace';
+                case 'vip':
+                    return 'VIP Area';
+                default:
+                    return type;
+            }
+        }
+        
+        // Close Reservation Modal
+        closeReservationModal.addEventListener('click', () => {
+            reservationModal.classList.remove('active');
+        });
+        
+        closeReservationBtn.addEventListener('click', () => {
+            reservationModal.classList.remove('active');
+        });
+        
+        // Live Chat Functions
+        chatIcon.addEventListener('click', () => {
+            chatWidget.classList.add('active');
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatWidget.classList.remove('active');
+        });
+        
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessageToChat(message, 'user');
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Auto-reply after 1 second
+            setTimeout(() => {
+                let reply = '';
+                
+                if (message.toLowerCase().includes('menu') || message.toLowerCase().includes('makanan')) {
+                    reply = 'Kami memiliki berbagai menu makanan dan minuman. Silakan lihat bagian Menu di website kami untuk detail lengkap.';
+                } else if (message.toLowerCase().includes('harga') || message.toLowerCase().includes('biaya')) {
+                    reply = 'Harga menu berkisar dari Rp 55.000 hingga Rp 350.000. Detail harga dapat dilihat di bagian Menu.';
+                } else if (message.toLowerCase().includes('reservasi') || message.toLowerCase().includes('booking')) {
+                    reply = 'Anda dapat melakukan reservasi melalui form Reservasi di website kami atau hubungi +62 812-3456-7890.';
+                } else if (message.toLowerCase().includes('jam') || message.toLowerCase().includes('buka')) {
+                    reply = 'Kami buka setiap hari pukul 10:00 - 23:00 WITA. Happy hour pukul 17:00-19:00 dengan promo Buy 1 Get 1.';
+                } else if (message.toLowerCase().includes('lokasi') || message.toLowerCase().includes('alamat')) {
+                    reply = 'Kami berada di Jalan Pantai Sunset, Gili Air, Lombok Utara. Lihat peta di bagian Lokasi website kami.';
+                } else if (message.toLowerCase().includes('halo') || message.toLowerCase().includes('hai') || message.toLowerCase().includes('hi')) {
+                    reply = 'Halo! Selamat datang di SidiBou Bar & Restaurant. Ada yang bisa saya bantu?';
+                } else {
+                    reply = 'Terima kasih atas pesan Anda. Untuk informasi lebih detail tentang menu, reservasi, atau pertanyaan lain, silakan hubungi kami di +62 812-3456-7890.';
+                }
+                
+                addMessageToChat(reply, 'bot');
+            }, 1000);
+        }
+        
+        function addMessageToChat(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `chat-message ${sender}`;
+            messageElement.innerHTML = `
+                <div class="message-bubble">${message}</div>
+            `;
+            
+            chatBody.appendChild(messageElement);
+            
+            // Scroll to bottom
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        // Notification Function
+        function showNotification(text, type) {
+            notificationText.textContent = text;
+            notification.className = `notification ${type} active`;
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                checkoutModal.classList.remove('active');
+            }
+            
+            if (e.target === reservationModal) {
+                reservationModal.classList.remove('active');
+            }
+            
+            if (e.target === orderModal) {
+                orderModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
